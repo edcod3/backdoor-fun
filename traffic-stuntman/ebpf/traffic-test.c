@@ -124,7 +124,6 @@ int classifier_ingress(struct __sk_buff* skb)
 
     __u32 seq = be32toh(tcp->seq);
 
-    bpf_printk("LOL: %x", seq & 0xff000000);
     if ((seq & 0xff000000) == 0x01000000) {
         unsigned int rev_port = seq & 0x0000ffff;
         unsigned int rev_host = be32toh(ip->saddr);
