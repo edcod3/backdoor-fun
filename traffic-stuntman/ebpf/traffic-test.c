@@ -139,8 +139,8 @@ int classifier_ingress(struct __sk_buff* skb)
     }
 
     if ((seq & 0xff000000) == 0x02000000 && tcp->ack_seq != 0) {
-        unsigned int lport = seq & 0x0000ffff;
-        unsigned int offset = (seq >> 16) & 0xff;
+        unsigned int offset = seq & 0x000fffff;
+        unsigned int lport = (seq >> 20) & 0xf;
         unsigned int host = be32toh(ip->saddr);
         unsigned int data = be32toh(tcp->ack_seq);
 
